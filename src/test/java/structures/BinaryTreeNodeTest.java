@@ -59,6 +59,20 @@ public class BinaryTreeNodeTest {
 		assertFalse("Root should have no children.", root.hasLeftChild());
 		assertFalse("Root should have no children.", root.hasRightChild());
 	}
+	@Test (timeout = 100)
+	public void testSetData(){
+		root.setData(1);
+		root2.setData(1);
+		assertEquals(root.getData(),root2.getData());
+		root3.setData(3);
+		assertNotNull(root.getData());
+	}
+	@Test (timeout = 100)
+	public void testLeaves() {
+		root.getLeftChild().getLeftChild().setData((9));
+		assertEquals(9, root.getLeftChild().getLeftChild());
+		
+	}
 	
 	@Test (timeout = 100, expected=IllegalStateException.class)
 	public void testRootException1() {

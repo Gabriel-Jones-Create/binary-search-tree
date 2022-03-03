@@ -2,6 +2,7 @@ package config;
 
 import structures.BinarySearchTree;
 import structures.BinaryTreeNode;
+import structures.BinaryTreeNodeImplementation;
 import structures.BinaryTreeUtility;
 
 
@@ -19,7 +20,7 @@ public class Configuration {
 	
 
 	public static <T> BinaryTreeNode<T> createBinaryTreeNode(BinaryTreeNode<T> left, T elem, BinaryTreeNode<T> right){
-		return null;
+		return new BinaryTreeNodeImplementation<T>(left, elem, right);
 	}
 	
 	public static BinaryTreeUtility createBinaryTreeUtility(){
