@@ -62,5 +62,11 @@ public class BinaryTreeNodeImplementation<T> implements BinaryTreeNode<T> {
 	public void setRightChild(BinaryTreeNode<T> right) {
 		this.right = right;
 	}
+	public int getDepth(BinaryTreeNode<T> root) {
+		if(hasLeftChild() == false && hasRightChild() == false) {
+			return 0;
+		}
+		return 1 + Math.max(getDepth(root.getLeftChild()), getDepth(root.getRightChild()));
+	}
 
 }

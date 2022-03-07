@@ -69,9 +69,37 @@ public class BinaryTreeNodeTest {
 	}
 	@Test (timeout = 100)
 	public void testLeaves() {
-		root.getLeftChild().getLeftChild().setData((9));
-		assertEquals(9, root.getLeftChild().getLeftChild());
+		BinaryTreeNode<Integer> next = new BinaryTreeNodeImplementation<Integer>(null,9,null);
+		root.setLeftChild(next);
+		assertEquals(next, root.getLeftChild());
+		assertEquals(root.getLeftChild().getData(),next.getData());
 		
+	}
+	@Test (timeout = 100)
+	public void testTree() {
+		BinaryTreeNode<Integer> leaf9 = new BinaryTreeNodeImplementation<Integer>(null,9,null);
+		BinaryTreeNode<Integer> leaf8 = new BinaryTreeNodeImplementation<Integer>(null,8,null);
+		BinaryTreeNode<Integer> leaf2 = new BinaryTreeNodeImplementation<Integer>(null,2,null);	
+		BinaryTreeNode<Integer> root0 = new BinaryTreeNodeImplementation<Integer>(leaf8,0,null);
+		BinaryTreeNode<Integer> root11 = new BinaryTreeNodeImplementation<Integer>(leaf9,11,null);
+	    BinaryTreeNode<Integer> root10 = new BinaryTreeNodeImplementation<Integer>(leaf2,10,root0);
+		BinaryTreeNode<Integer> root3 = new BinaryTreeNodeImplementation<Integer>(root11,3,null);
+		BinaryTreeNode<Integer> root40 = new BinaryTreeNodeImplementation<Integer>(root3,40,root10);		
+		/* 
+		 *        40
+		 *       / \
+		 *      3   10
+		 *     /    / \ 
+		 *    11   2   0
+		 *    /        /
+		 *   9        8
+		 * */
+		root = root40;
+		assertEquals(root.getLeftChild().getLeftChild().getLeftChild().getData(), new Integer(9));
+		assertEquals(root.getRightChild().getLeftChild(), leaf2);
+		root11.setRightChild(new BinaryTreeNodeImplementation<Integer>(null,13,null) );
+		assertNotNull(root.getLeftChild().getLeftChild().getRightChild());
+		assertEquals(root.getLeftChild().getLeftChild().getRightChild().getData(), new Integer(13));
 	}
 	
 	@Test (timeout = 100, expected=IllegalStateException.class)

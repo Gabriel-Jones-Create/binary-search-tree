@@ -361,7 +361,7 @@ public class BinaryTreeUtilityTest {
 		assertTrue(utility.isBalanced(root2, 1));
 		assertTrue(utility.isBalanced(root2, 2));
 		
-	//      5
+	//                     5
 	//              /            \
 	//             3             19
 	//            / \           /
@@ -439,6 +439,44 @@ public class BinaryTreeUtilityTest {
 		//            / \           /  \
 		//           1   4         7    25
 		assertTrue(utility.isBST(root5));
+	}
+	@Test(timeout = 100)
+	public void testGetDepth() {
+		BinaryTreeNode<Integer> leaf9 = new BinaryTreeNodeImplementation<Integer>(null,9,null);
+		BinaryTreeNode<Integer> leaf8 = new BinaryTreeNodeImplementation<Integer>(null,8,null);
+		BinaryTreeNode<Integer> leaf2 = new BinaryTreeNodeImplementation<Integer>(null,2,null);	
+		BinaryTreeNode<Integer> root0 = new BinaryTreeNodeImplementation<Integer>(leaf8,0,null);
+		BinaryTreeNode<Integer> root11 = new BinaryTreeNodeImplementation<Integer>(leaf9,11,null);
+	    BinaryTreeNode<Integer> root10 = new BinaryTreeNodeImplementation<Integer>(leaf2,10,root0);
+		BinaryTreeNode<Integer> root3 = new BinaryTreeNodeImplementation<Integer>(root11,3,null);
+		BinaryTreeNode<Integer> root40 = new BinaryTreeNodeImplementation<Integer>(root3,40,root10);
+		/* 
+		 *        40
+		 *       / \
+		 *      3   10
+		 *     /    / \ 
+		 *    11   2   0
+		 *    /        /
+		 *   9        8
+		 * */
+		assertEquals(utility.getDepth(root40), 3);
+	}
+	@Test //(timeout = 100)
+	public void testIsBalanced1() {
+		BinaryTreeNode<Integer> leaf9 = new BinaryTreeNodeImplementation<Integer>(null,9,null);
+		BinaryTreeNode<Integer> leaf8 = new BinaryTreeNodeImplementation<Integer>(null,8,null);
+		BinaryTreeNode<Integer> leaf2 = new BinaryTreeNodeImplementation<Integer>(null,2,null);	
+		BinaryTreeNode<Integer> root0 = new BinaryTreeNodeImplementation<Integer>(leaf8,0,null);
+		BinaryTreeNode<Integer> root11 = new BinaryTreeNodeImplementation<Integer>(leaf9,11,null);
+	    BinaryTreeNode<Integer> root10 = new BinaryTreeNodeImplementation<Integer>(leaf2,10,root0);
+		BinaryTreeNode<Integer> root3 = new BinaryTreeNodeImplementation<Integer>(root11,3,null);
+		BinaryTreeNode<Integer> root40 = new BinaryTreeNodeImplementation<Integer>(root3,40,root10);
+		assertFalse(utility.isBalanced(root40, 0));
+		assertTrue(utility.isBalanced(root40, 2));
+		assertTrue(utility.isBalanced(root11, 1));
+		assertTrue(utility.isBalanced(leaf8, 0));
+		assertFalse(utility.isBalanced(root3,1));
+		assertTrue(utility.isBalanced(root3,2));
 	}
 	
 	@Test (timeout = 100, expected = NullPointerException.class)
