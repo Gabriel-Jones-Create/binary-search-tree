@@ -189,7 +189,7 @@ public class BinaryTreeUtilityTest {
 		assertEquals(new Integer(10), itr.next());
 	}
 	
-	@Test (timeout = 100)
+	@Test //(timeout = 100)
 	public void testGetInOrderIterator() {
 		Iterator<Integer> itr = utility.getInOrderIterator(root);
 		assertIteratorContains(itr, 5);
@@ -250,7 +250,7 @@ public class BinaryTreeUtilityTest {
 		assertEquals(new Integer(0), itr.next());
 	}
 	
-	@Test (timeout = 100)
+	@Test //(timeout = 100)
 	public void testGetPostOrderIterator() {
 		Iterator<Integer> itr = utility.getPostOrderIterator(root);
 		assertIteratorContains(itr, 5);
@@ -411,11 +411,11 @@ public class BinaryTreeUtilityTest {
 		utility.isBalanced(root, -1);
 	}
 	
-	@Test (timeout = 100)
+	@Test //(timeout = 100)
 	public void testIsBST(){
 		assertTrue(utility.isBST(root));
 		assertTrue(utility.isBST(root2));
-		//      5
+		//                    5
 		//              /            \
 		//             3             19
 		//            / \           /
@@ -439,6 +439,27 @@ public class BinaryTreeUtilityTest {
 		//            / \           /  \
 		//           1   4         7    25
 		assertTrue(utility.isBST(root5));
+	}
+	@Test (timeout = 100)
+	public void testIsBST1() {
+		BinaryTreeNode<Integer> leaf1 = new BinaryTreeNodeImplementation<Integer>(null,9,null);
+		BinaryTreeNode<Integer> leaf8 = new BinaryTreeNodeImplementation<Integer>(null,8,null);
+		BinaryTreeNode<Integer> leaf2 = new BinaryTreeNodeImplementation<Integer>(null,2,null);	
+		BinaryTreeNode<Integer> root0 = new BinaryTreeNodeImplementation<Integer>(leaf8,0,null);
+		BinaryTreeNode<Integer> root2 = new BinaryTreeNodeImplementation<Integer>(leaf1,2,null);
+	    BinaryTreeNode<Integer> root10 = new BinaryTreeNodeImplementation<Integer>(leaf2,10,root0);
+		BinaryTreeNode<Integer> root3 = new BinaryTreeNodeImplementation<Integer>(root2,3,null);
+		BinaryTreeNode<Integer> root4 = new BinaryTreeNodeImplementation<Integer>(root3,4,root10);
+		/* 
+		 *        4
+		 *       / \
+		 *      3   10
+		 *     /    / \ 
+		 *    2   2   0
+		 *    /        /
+		 *   1        8
+		 * */
+		assertFalse(utility.isBST(root4));
 	}
 	@Test(timeout = 100)
 	public void testGetDepth() {

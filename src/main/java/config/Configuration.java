@@ -5,6 +5,7 @@ import structures.BinaryTreeNode;
 import structures.BinaryTreeNodeImplementation;
 import structures.BinaryTreeUtility;
 import structures.BinaryTreeUtilityImplementation;
+import structures.LinkedBinarySearchTree;
 
 
 /**
@@ -29,7 +30,7 @@ public class Configuration {
 	}
 	
 	public static <T extends Comparable<? super T>> BinarySearchTree<T> createBinarySearchTree(){
-		return null;
+		return new LinkedBinarySearchTree<T>();
 	}
 	
 

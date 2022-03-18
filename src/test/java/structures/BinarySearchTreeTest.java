@@ -83,7 +83,7 @@ public class BinarySearchTreeTest {
 		tree.contains(null);
 	}
 	
-	@Test (timeout = 100)
+	@Test //(timeout = 100)
 	public void testSimpleAddRemoveAndSize() {
 		assertEquals("Add should return tree for convenience.", tree, tree.add(1));
 		assertEquals("Add should return tree for convenience.", tree, tree.add(5));
