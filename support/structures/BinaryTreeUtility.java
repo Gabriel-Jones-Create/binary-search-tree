@@ -148,6 +148,8 @@ public interface BinaryTreeUtility {
 	 *             if {@code tolerance} is less than 0
 	 */
 	public <T> boolean isBalanced(BinaryTreeNode<T> root, int tolerance);
+	
+	public <T> Iterator<T> getLevelOrderIterator(BinaryTreeNode<T> root);
 
 	/**
 	 * <p>

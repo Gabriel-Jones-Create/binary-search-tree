@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class PreOrderIteratorRecursive<T> implements Iterator<T>{
-	private Queue <BinaryTreeNode<T>> queue;
+	private Queue<BinaryTreeNode<T>> queue;
 	public PreOrderIteratorRecursive(BinaryTreeNode<T> root) {
 		queue = new LinkedList<BinaryTreeNode<T>>();
 		addNext(root);
